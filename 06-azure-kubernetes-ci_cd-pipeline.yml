@@ -24,9 +24,9 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'azuredevops-docker'
-        repository: 'myz11-tech / devops-master-class'
+        repository: 'myz11tech/currency-exchange-devops'
         command: 'buildAndPush'
-        Dockerfile: '**/devops-master-class/projects/microservices/01-currency-exchange-microservice-basic/Dockerfile'
+        Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
     - task: CopyFiles@2
       inputs:
