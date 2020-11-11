@@ -47,19 +47,18 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    - task: DownloadBuildArtifacts@0
+    - task: DownloadPipelineArtifact@2
       inputs:
         buildType: 'current'
-        downloadType: 'single'
         artifactName: 'manifest'
         itemPattern: '**/*.yaml'
-        downloadPath: '$(System.ArtifactsDirectory)'
+        targetPath: '$(System.ArtifactsDirectory)'
     - task: KubernetesManifest@0
       inputs:
         action: 'deploy'
         kubernetesServiceConnection: 'azure-kubernetes'
         namespace: 'default'
-        manifests: '$(System.ArtifactsDirectory)'
+        manifests: '$(System.ArtifactsDirectory)/configuration/kubernetes/deployment.yaml'
         containers: 'myz11tech/currency-exchange-devops:$(tag)'
 #STage
 #Download the K8s files
