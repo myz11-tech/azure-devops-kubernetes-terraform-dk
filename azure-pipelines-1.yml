@@ -59,7 +59,7 @@ stages:
         action: 'deploy'
         kubernetesServiceConnection: 'azure-kubernetes'
         namespace: 'default'
-        manifests: '$(System.ArtifactsDirectory)/configuration/kubernetes/deployment.yaml'
+        manifests: '$(System.ArtifactsDirectory)'
         containers: 'myz11tech/currency-exchange-devops:$(tag)'
 #STage
 #Download the K8s files
