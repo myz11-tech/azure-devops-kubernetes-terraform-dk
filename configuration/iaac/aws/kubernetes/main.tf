@@ -12,13 +12,13 @@ terraform {
   }
 }
 
-resource "aws_default_vpc" "default" {
+# resource "aws_default_vpc" "default" {
 
-}
+# }
 
-data "aws_subnet_ids" "subnets" {
-  vpc_id = aws_default_vpc.default.id
-}
+# data "aws_subnet_ids" "subnets" {
+#   vpc_id = aws_default_vpc.default.id
+# }
 
 provider "kubernetes" {
   host                   = data.aws_eks_cluster.cluster.endpoint
@@ -32,11 +32,10 @@ module "myz02-cluster" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = "myz02-cluster"
   cluster_version = "1.14"
-  subnets         = ["subnet-5859e079", "subnet-8ca416ea"] #CHANGE
+  subnets         = ["subnet-5859e079", "subnet-908e31cf"] #CHANGE
   #subnets = data.aws_subnet_ids.subnets.ids
-  vpc_id          = aws_default_vpc.default.id
-
-  #vpc_id         = "subnet-8ca416ea"
+#   vpc_id          = aws_default_vpc.default.id
+  vpc_id         = "vpc-ed70bf90"
 
   node_groups = [
     {
