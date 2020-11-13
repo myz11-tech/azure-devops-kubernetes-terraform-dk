@@ -1,5 +1,5 @@
 # aws --version
-# aws eks --region us-east-1 update-kubeconfig --name in28minutes-cluster
+# aws eks --region us-east-1 update-kubeconfig --name myz02-cluster
 # Uses default VPC and Subnet. Create Your Own VPC and Private Subnets for Prod Usage.
 # AKIAVQ2MX552VSS3GB6X
 
@@ -28,9 +28,9 @@ provider "kubernetes" {
   version                = "~> 1.9"
 }
 
-module "in28minutes-cluster" {
+module "myz02-cluster" {
   source          = "terraform-aws-modules/eks/aws"
-  cluster_name    = "in28minutes-cluster"
+  cluster_name    = "myz02-cluster"
   cluster_version = "1.14"
   subnets         = ["subnet-5859e079", "subnet-8ca416ea"] #CHANGE
   #subnets = data.aws_subnet_ids.subnets.ids
@@ -49,11 +49,11 @@ module "in28minutes-cluster" {
 }
 
 data "aws_eks_cluster" "cluster" {
-  name = module.in28minutes-cluster.cluster_id
+  name = module.myz02-cluster.cluster_id
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = module.in28minutes-cluster.cluster_id
+  name = module.myz02-cluster.cluster_id
 }
 
 
