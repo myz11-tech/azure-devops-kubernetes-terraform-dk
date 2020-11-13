@@ -28,9 +28,9 @@ provider "kubernetes" {
   version                = "~> 1.12"
 }
 
-module "myz02-cluster" {
+module "in28minutes-cluster" {
   source          = "terraform-aws-modules/eks/aws"
-  cluster_name    = "myz02-cluster"
+  cluster_name    = "in28minutes-cluster"
   cluster_version = "1.14"
   subnets         = ["subnet-5859e079", "subnet-908e31cf"] #CHANGE
   #subnets = data.aws_subnet_ids.subnets.ids
@@ -48,11 +48,11 @@ module "myz02-cluster" {
 }
 
 data "aws_eks_cluster" "cluster" {
-  name = module.myz02-cluster.cluster_id
+  name = module.in28minutes-cluster.cluster_id
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = module.myz02-cluster.cluster_id
+  name = module.in28minutes-cluster.cluster_id
 }
 
 
