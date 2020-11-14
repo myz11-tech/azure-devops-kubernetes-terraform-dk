@@ -52,7 +52,7 @@ stages:
         buildType: 'current'
         artifactName: 'manifest'
         itemPattern: '**/*.yaml'
-        targetPath: '$(System.ArtifactsDirectory)'
+        targetPath: '$(System.ArtifactsDirectory)/configuration/kubernetes/deployment.yaml'
     - task: KubernetesManifest@0
       inputs:
         action: 'deploy'
