@@ -31,11 +31,11 @@ stages:
       inputs:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
         Contents: '**/*.yaml'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+        TargetFolder: '$(System.ArtifactsDirectory)'
 
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        PathtoPublish: '$(System.ArtifactsDirectory)'
         ArtifactName: 'mainfest'
         publishLocation: 'Container'
 
